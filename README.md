@@ -6,7 +6,7 @@ This application is a fresh docker application with Laravel 10, nginx, Postgress
 
 - **[Hosne Mobarak Rubai](https://github.com/hmrubai/)**
 
-## Features
+## Tools
 
 - PHP Settings
 - nginx Setting
