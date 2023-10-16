@@ -18,6 +18,8 @@ This application is a fresh docker application with Laravel 10, nginx, Postgress
 ## Run Application
 
 ```
+    git clone https://github.com/hmrubai/laravel-docker.git
+    cd laravel-docker
     docker-compose up -d
 ```
 
