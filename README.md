@@ -1,4 +1,4 @@
-## Leave Management System
+## Laravel Application with Docker
 
 This application is a fresh docker application with Laravel 10, nginx, Postgress, pgAdmin
 
