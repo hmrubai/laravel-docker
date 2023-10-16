@@ -1,0 +1,68 @@
+version: '1.0'
+
+services:
+    
+    nginx:
+        container_name: nginx
+        image: nginx:alpine
+        ports:
+            - "8080:80"
+        depends_on:
+            - app
+            - db
+        volumes:
+            - ./src:/var/www
+            - ./nginx/conf.d/:/etc/nginx/conf.d/
+
+    # db:
+    #     image: mysql
+    #     container_name: mysql
+    #     ports:
+    #       - "3306:3306"
+    #     volumes:
+    #         - ./mysql/data:/var/lib/mysql
+    #     environment:
+    #         - MYSQL_DATABASE=bims_db
+    #         - MYSQL_ROOT_PASSWORD=password
+
+    # phpmyadmin:
+    #     image: phpmyadmin/phpmyadmin
+    #     container_name: phpmyadmin
+    #     ports:
+    #       - "3400:80"
+    #     depends_on:
+    #         - db
+
+    db:
+        image: postgres
+        container_name: postgres
+        volumes:
+            - ./postgresql/data:/var/lib/postgresql/data
+        ports:
+            - "5432:5432"
+        environment: 
+            POSTGRES_DB: bims_db
+            POSTGRES_USER: root 
+            POSTGRES_PASSWORD: password 
+
+    app:
+        container_name: bims
+        build: 
+            context: ./php
+            dockerfile: Dockerfile
+        volumes:
+            - ./src:/var/www
+        ports:
+            - "9000:9000"
+        working_dir: /var/www
+
+    pgadmin:
+        image: dpage/pgadmin4
+        container_name: pgAdmin
+        ports:
+            - "5050:80"
+        depends_on:
+            - db 
+        environment:
+            PGADMIN_DEFAULT_EMAIL: rubai.mobarak@gmail.com
+            PGADMIN_DEFAULT_PASSWORD: password
