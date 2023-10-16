@@ -29,3 +29,7 @@ This application is a fresh docker application with Laravel 10, nginx, Postgress
     1. cd src
     2. docker-compose exec app php artisan {your command}
 ```
+
+Note: After opening pgAdmin4, you have to add server! After that you will get to see the Database!
+
+That's it!! Happy coding!
